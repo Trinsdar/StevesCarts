@@ -11,7 +11,7 @@ public class Redstone extends BaseEffect {
 
 	@Override
 	public void update(final TileEntityUpgrade upgrade) {
-		if (upgrade.getWorld().getRedstonePower(upgrade.getPos(), upgrade.getSide()) >= 1 && upgrade.getMaster() != null) {
+		if (upgrade.getWorld().isBlockIndirectlyGettingPowered(upgrade.getPos()) >= 1 && upgrade.getMaster() != null) {
 			upgrade.getMaster().doAssemble();
 		}
 	}
