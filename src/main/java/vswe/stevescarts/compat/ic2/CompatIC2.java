@@ -7,7 +7,7 @@ import vswe.stevescarts.api.SCLoadingPlugin;
 /**
  * Created by modmuss50 on 08/05/2017.
  */
-@SCLoadingPlugin(dependentMod = "ic2", incompatibleMod = "ic2-classic-spmod")
+@SCLoadingPlugin(dependentMod = "ic2-classic-spmod")
 public class CompatIC2 implements ISCPlugin {
 
 	@Override

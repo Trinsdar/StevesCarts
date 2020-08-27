@@ -63,7 +63,7 @@ public enum ModBlocks {
 				if (Block.class.isAssignableFrom(info.clazz)) {
 					final Block block = info.clazz.getConstructor().newInstance();
 					block.setHardness(2.0f);
-					block.setRegistryName(Constants.MOD_ID, info.name.toLowerCase()).setTranslationKey("SC2:" + info.name);
+					block.setRegistryName(Constants.MOD_ID, info.name.toLowerCase()).setUnlocalizedName("SC2:" + info.name);
 					info.block = block;
 
 					ItemBlock item;
@@ -73,7 +73,7 @@ public enum ModBlocks {
 						item = new ItemBlock(block);
 
 					ITEM_BLOCKS.add(item);
-					item.setRegistryName(Constants.MOD_ID + ":" + info.name).setTranslationKey(Constants.MOD_ID + ":" + info.name);
+					item.setRegistryName(Constants.MOD_ID + ":" + info.name).setUnlocalizedName(Constants.MOD_ID + ":" + info.name);
 
 					if (info.tileEntityClazz != null) {
 						GameRegistry.registerTileEntity(info.tileEntityClazz, info.tileEntityName);
@@ -120,7 +120,7 @@ public enum ModBlocks {
 				ISubtypeItemBlockModelDefinition subtypeBlock = (ISubtypeItemBlockModelDefinition) block;
 				for (int i = 0; i < subtypeBlock.getSubtypeNumber(); i++) {
 					int meta = subtypeBlock.getSubtypeMeta(i);
-					ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(name.getNamespace() + ":" + String.format(subtypeBlock.getSubtypeName(meta), name.getPath()), "inventory"));
+					ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(name.getResourceDomain() + ":" + String.format(subtypeBlock.getSubtypeName(meta), name.getResourcePath()), "inventory"));
 				}
 			} else {
 				ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(name, "inventory"));

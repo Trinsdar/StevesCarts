@@ -44,7 +44,7 @@ public class ForestryTreeModule implements ITreeModule {
 
 	@Override
 	public EnumHarvestResult isWood(IBlockState blockState, BlockPos pos, EntityMinecartModular cart) {
-		return blockState.getBlock().getRegistryName().getNamespace().equals("forestry") && blockState.getBlock().getRegistryName().getPath().startsWith("logs") ? EnumHarvestResult.ALLOW
+		return blockState.getBlock().getRegistryName().getResourceDomain().equals("forestry") && blockState.getBlock().getRegistryName().getResourcePath().startsWith("logs") ? EnumHarvestResult.ALLOW
 		                                                                                                                                                                      : EnumHarvestResult.SKIP;
 	}
 

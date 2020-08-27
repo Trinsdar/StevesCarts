@@ -74,7 +74,7 @@ public class BlockUpgrade extends BlockContainerBase implements ModBlocks.ICusto
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(FACING, EnumFacing.byIndex(meta & 7)).withProperty(CONNECTED, ((meta & 8) >> 3) == 1);
+		return getDefaultState().withProperty(FACING, EnumFacing.getFront(meta & 7)).withProperty(CONNECTED, ((meta & 8) >> 3) == 1);
 	}
 
 	@Override
@@ -151,7 +151,7 @@ public class BlockUpgrade extends BlockContainerBase implements ModBlocks.ICusto
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
+	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 

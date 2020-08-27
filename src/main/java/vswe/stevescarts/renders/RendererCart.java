@@ -59,8 +59,8 @@ public class RendererCart<T extends EntityMinecartModular> extends Render<T> {
 			x += posFromRail.x - partialPosX;
 			y += (lastPos.y + nextPos.y) / 2.0 - partialPosY;
 			z += posFromRail.z - partialPosZ;
-			Vec3d difference = nextPos.add(-lastPos.x, -lastPos.y, -lastPos.z);
-			if (difference.length() != 0.0) {
+			Vec3d difference = nextPos.addVector(-lastPos.x, -lastPos.y, -lastPos.z);
+			if (difference.lengthVector() != 0.0) {
 				difference = difference.normalize();
 				yaw = (float) (Math.atan2(difference.z, difference.x) * 180.0 / 3.141592653589793);
 				partialRotPitch = (float) (Math.atan(difference.y) * 73.0);

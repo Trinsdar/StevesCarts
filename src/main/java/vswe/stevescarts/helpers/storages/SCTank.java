@@ -130,7 +130,7 @@ public class SCTank extends FluidTank {
 				name = FluidRegistry.getFluidName(fluid);
 			}
 			if (name != null && !name.equals("")) {
-				name = fluid.getFluid().getRarity().color.toString() + Character.toUpperCase(name.charAt(0)) + name.substring(1) + TextFormatting.WHITE;
+				name = fluid.getFluid().getRarity().rarityColor.toString() + Character.toUpperCase(name.charAt(0)) + name.substring(1) + TextFormatting.WHITE;
 			} else {
 				name = Localization.MODULES.TANKS.INVALID.translate();
 			}

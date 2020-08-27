@@ -50,6 +50,9 @@ repositories {
 		name = "Modmuss50"
 		url = "http://maven.modmuss50.me/"
 	}
+	maven {
+		url = "https://www.cursemaven.com"
+	}
 }
 
 
@@ -57,19 +60,20 @@ dependencies {
 	deobfCompile ('net.sengir.forestry:forestry_1.12.2:5.8.2.374'){
 		transitive = false
 	}
-	compileOnly ('RebornCore:RebornCore-1.12.2:+:dev'){
+	compileOnly ('RebornCore:RebornCore-1.12.2:3.13.2.+:dev'){
 		transitive = false
 	}
-	runtime ('RebornCore:RebornCore-1.12.2:+:universal'){
+	runtime ('RebornCore:RebornCore-1.12.2:3.13.2.+:universal'){
 		transitive = false
 	}
-	deobfCompile ('TechReborn:TechReborn-1.12.2:+:universal'){
+	deobfCompile ('TechReborn:TechReborn-1.12.2:2.20.5.+:universal'){
 		transitive = false
 	}
-	deobfCompile ('TechReborn:TechReborn-ModCompatibility-1.12.2:+:universal') {
+	deobfCompile ('TechReborn:TechReborn-ModCompatibility-1.12.2:1.1.0.15:universal') {
 		transitive = false
 	}
-	deobfCompile  'net.industrial-craft:industrialcraft-2:2.8.104-ex112'
+	compile "curse.maven:ic2-classic:2979877"
+	//deobfCompile  'net.industrial-craft:industrialcraft-2:2.8.104-ex112'
 }
 
 processResources{

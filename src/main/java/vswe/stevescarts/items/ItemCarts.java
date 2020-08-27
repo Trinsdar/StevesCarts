@@ -34,7 +34,7 @@ public class ItemCarts extends ItemMinecart {
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setCreativeTab(null);
-		setTranslationKey("SC2:ModularCart");
+		setUnlocalizedName("SC2:ModularCart");
 	}
 
 	public String getName() {

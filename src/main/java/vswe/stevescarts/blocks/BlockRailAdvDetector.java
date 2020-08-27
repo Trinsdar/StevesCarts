@@ -140,7 +140,7 @@ public class BlockRailAdvDetector extends BlockRail {
 				}
 			}
 		}
-		int power = world.getRedstonePowerFromNeighbors(pos);
+		int power = world.getRedstonePower(pos, null);
 		if (power > 0) {
 			cart.releaseCart();
 		}

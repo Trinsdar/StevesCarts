@@ -22,7 +22,7 @@ public class ItemBlockStorage extends ItemBlock {
 	}
 
 	@Override
-	public String getTranslationKey(@Nonnull ItemStack item) {
+	public String getUnlocalizedName(@Nonnull ItemStack item) {
 		if (!item.isEmpty()) {
 			return "item.SC2:BlockStorage" + item.getItemDamage();
 		}

@@ -29,7 +29,7 @@ public class TrackLevel {
 	public static ArrayList<TrackLevel> loadMapsFromFolder() {
 		final ArrayList<TrackLevel> maps = new ArrayList<>();
 		try {
-			File dir = new File(Minecraft.getMinecraft().gameDir, TrackLevel.MAP_FOLDER_PATH);
+			File dir = new File(Minecraft.getMinecraft().mcDataDir, TrackLevel.MAP_FOLDER_PATH);
 			File[] children = dir.listFiles();
 			if (children != null) {
 				for (final File child : children) {
@@ -51,7 +51,7 @@ public class TrackLevel {
 	@SideOnly(Side.CLIENT)
 	public static TrackLevel loadMap(final String filename) {
 		try {
-			final byte[] bytes = readFromFile(new File(Minecraft.getMinecraft().gameDir, TrackLevel.MAP_FOLDER_PATH + filename));
+			final byte[] bytes = readFromFile(new File(Minecraft.getMinecraft().mcDataDir, TrackLevel.MAP_FOLDER_PATH + filename));
 			return loadMapData(bytes);
 		} catch (Exception exception) {
 			exception.printStackTrace();
@@ -105,7 +105,7 @@ public class TrackLevel {
 	public static boolean saveMap(String name, int playerX, int playerY, TrackOrientation.DIRECTION playerDir, int itemX, int itemY, ArrayList<Track> tracks) {
 		try {
 			final byte[] bytes = saveMapData(name, playerX, playerY, playerDir, itemX, itemY, tracks);
-			writeToFile(new File(Minecraft.getMinecraft().gameDir, "sc2/arcade/trackoperator/" + name.replace(" ", "_") + ".dat"), bytes);
+			writeToFile(new File(Minecraft.getMinecraft().mcDataDir, "sc2/arcade/trackoperator/" + name.replace(" ", "_") + ".dat"), bytes);
 			return true;
 		} catch (IOException ex) {
 			return false;
