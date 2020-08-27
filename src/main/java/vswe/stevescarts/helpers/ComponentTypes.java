@@ -124,6 +124,6 @@ public enum ComponentTypes {
 	}
 
 	public String getLocalizedName() {
-		return I18n.format(ModItems.COMPONENTS.getTranslationKey(getItemStack()) + ".name");
+		return I18n.format(ModItems.COMPONENTS.getUnlocalizedName(getItemStack()) + ".name");
 	}
 }
