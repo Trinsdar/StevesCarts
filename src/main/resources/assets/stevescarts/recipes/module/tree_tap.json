@@ -7,7 +7,7 @@
     },
     {
       "type": "forge:mod_loaded",
-      "modid": "ic2"
+      "modid": "ic2-classic-spmod"
     }
   ],
   "pattern": [
@@ -19,7 +19,7 @@
       "data": 9
     },
     "#": {
-      "item": "ic2:treetap"
+      "item": "ic2:itemtreetap"
     }
   },
   "result": {

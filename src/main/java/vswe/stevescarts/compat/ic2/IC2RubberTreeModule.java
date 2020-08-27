@@ -24,9 +24,9 @@ import vswe.stevescarts.modules.workers.tools.ModuleWoodcutter;
  */
 public class IC2RubberTreeModule implements ITreeProduceModule {
 
-	public static final ResourceLocation IC2_SAPLING_NAME = new ResourceLocation("ic2", "sapling");
+	public static final ResourceLocation IC2_SAPLING_NAME = new ResourceLocation("ic2", "blockrubsapling");
 	public static final ResourceLocation IC2_LEAF_NAME = new ResourceLocation("ic2", "leaves");
-	public static final ResourceLocation IC2_LOG_NAME = new ResourceLocation("ic2", "rubber_wood");
+	public static final ResourceLocation IC2_LOG_NAME = new ResourceLocation("ic2", "blockrubwood");
 
 	@Override
 	public EnumHarvestResult isLeaves(IBlockState blockState, BlockPos pos, EntityMinecartModular cart) {
