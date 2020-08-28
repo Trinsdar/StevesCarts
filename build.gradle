@@ -23,7 +23,7 @@ apply plugin: 'maven-publish'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "2.4.32"
+version = "2.4.33"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
@@ -77,8 +77,10 @@ dependencies {
 	deobfCompile ('TechReborn:TechReborn-ModCompatibility-1.12.2:1.1.0.15:universal') {
 		transitive = false
 	}
-	compile "curse.maven:ic2-classic:2979877"
-	//deobfCompile  'net.industrial-craft:industrialcraft-2:2.8.104-ex112'
+	compileOnly "curse.maven:ic2-classic:2979877"
+	runtime "curse.maven:ic2-classic:2979877"
+	deobfProvided  'net.industrial-craft:industrialcraft-2:2.8.104-ex112'
+	//runtime  'net.industrial-craft:industrialcraft-2:2.8.104-ex112'
 }
 
 processResources{

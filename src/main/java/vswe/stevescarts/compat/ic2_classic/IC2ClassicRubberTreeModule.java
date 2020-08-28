@@ -1,10 +1,10 @@
-package vswe.stevescarts.compat.ic2;
+package vswe.stevescarts.compat.ic2_classic;
 
+import ic2.api.classic.audio.PositionSpec;
 import ic2.core.IC2;
-import ic2.core.audio.PositionSpec;
-import ic2.core.block.BlockRubWood;
-import ic2.core.item.type.MiscResourceType;
-import ic2.core.ref.ItemName;
+import ic2.core.block.resources.BlockRubberWood;
+import ic2.core.platform.registry.Ic2Items;
+import ic2.core.platform.registry.Ic2Sounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -22,11 +22,11 @@ import vswe.stevescarts.modules.workers.tools.ModuleWoodcutter;
 /**
  * Created by modmuss50 on 08/05/2017.
  */
-public class IC2RubberTreeModule implements ITreeProduceModule {
+public class IC2ClassicRubberTreeModule implements ITreeProduceModule {
 
-	public static final ResourceLocation IC2_SAPLING_NAME = new ResourceLocation("ic2", "sapling");
+	public static final ResourceLocation IC2_SAPLING_NAME = new ResourceLocation("ic2", "blockrubsapling");
 	public static final ResourceLocation IC2_LEAF_NAME = new ResourceLocation("ic2", "leaves");
-	public static final ResourceLocation IC2_LOG_NAME = new ResourceLocation("ic2", "rubber_wood");
+	public static final ResourceLocation IC2_LOG_NAME = new ResourceLocation("ic2", "blockrubwood");
 
 	@Override
 	public EnumHarvestResult isLeaves(IBlockState blockState, BlockPos pos, EntityMinecartModular cart) {
@@ -71,14 +71,16 @@ public class IC2RubberTreeModule implements ITreeProduceModule {
 		IBlockState workSate = cart.world.getBlockState(workPos);
 		boolean foundBlock = false;
 		while (isWood(workSate, workPos, cart) == EnumHarvestResult.ALLOW) {
-			if (workSate.getBlock() instanceof BlockRubWood) {
+			if (workSate.getBlock() instanceof BlockRubberWood) {
 				foundBlock = true;
-				BlockRubWood.RubberWoodState rubberWoodState = workSate.getValue(BlockRubWood.stateProperty);
-				if (!rubberWoodState.isPlain() && rubberWoodState.wet) {
-					drops.add(ItemName.misc_resource.getItemStack(MiscResourceType.resin).copy());
-					if (!simulate) {
-						cart.world.setBlockState(workPos, workSate.withProperty(BlockRubWood.stateProperty, rubberWoodState.getDry()));
-						IC2.audioManager.playOnce(cart, PositionSpec.Center, "Tools/Treetap.ogg", true, IC2.audioManager.getDefaultVolume());
+				boolean server = IC2.platform.isSimulating();
+				if (workSate.getValue(BlockRubberWood.resin) && workSate.getValue(BlockRubberWood.collectable)) {
+					drops.add(Ic2Items.stickyResin.copy());
+					if (!simulate && server) {
+						cart.world.setBlockState(workPos, workSate.withProperty(BlockRubberWood.collectable, false));
+						cart.world.scheduleUpdate(workPos, workSate.getBlock(), 100);
+						(IC2.network.get(true)).announceBlockUpdate(cart.world, workPos);
+						IC2.audioManager.playOnce(cart, PositionSpec.Center, Ic2Sounds.treeTapUse, true, IC2.audioManager.getDefaultVolume());
 						woodcutter.damageTool(1);
 						woodcutter.startWorking(20);
 					}
