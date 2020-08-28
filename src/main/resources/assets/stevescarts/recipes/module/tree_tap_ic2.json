@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "stevescarts:module_enabled",
+      "id": 89
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ic2"
+    },
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "ic2-classic-spmod"
+      }
+    }
+  ],
+  "pattern": [
+    "#X"
+  ],
+  "key": {
+    "X": {
+      "item": "stevescarts:modulecomponents",
+      "data": 9
+    },
+    "#": {
+      "item": "ic2:treetap"
+    }
+  },
+  "result": {
+    "item": "stevescarts:cartmodule",
+    "data": 102
+  }
+}
